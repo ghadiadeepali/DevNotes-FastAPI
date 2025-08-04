@@ -6,6 +6,11 @@ from sqlalchemy import pool
 from alembic import context
 
 from backend.core.db import Base, DATABASE_URL
+from backend.models import workspaces
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -50,6 +55,7 @@ def run_migrations_offline() -> None:
 
     with context.begin_transaction():
         context.run_migrations()
+
 
 
 def run_migrations_online() -> None:
