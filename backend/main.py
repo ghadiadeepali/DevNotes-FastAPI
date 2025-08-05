@@ -1,8 +1,7 @@
-from fastapi import FastAPI
-from backend.core.db import init_db
+from fastapi import FastAPI, APIRouter
+from backend.services import workspaces
 
 app = FastAPI()
 
-@app.on_event("startup")
-def on_startup():
-    init_db()
+app.include_router(workspaces.router)
+
